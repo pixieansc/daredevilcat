@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpjss5tyv43ub"]
+
+[ext_resource type="Texture2D" uid="uid://btgehwx4dven5" path="res://art/platform.png" id="1_ba0x2"]
+[ext_resource type="Script" uid="uid://dscswfq3kdol0" path="res://scenes/platform.gd" id="1_nlgqw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nlgqw"]
+radius = 2.4
+height = 27.2
+
+[node name="platform" type="StaticBody2D"]
+scale = Vector2(6, 6)
+script = ExtResource("1_nlgqw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_ba0x2")
+region_enabled = true
+region_rect = Rect2(1.21282, 12.9669, 27.9589, 16.0238)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nlgqw")
