@@ -3,7 +3,7 @@ extends Node2D
 var height = 0
 var rng = RandomNumberGenerator.new()
 @onready var platform = preload("res://scenes/platform.tscn")
-var spawn_speed = 0.5
+var spawn_speed = 1.2
 
 func _ready() -> void:
 	# populates screen with platforms

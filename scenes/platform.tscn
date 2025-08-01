@@ -1,13 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpjss5tyv43ub"]
+[gd_scene load_steps=4 format=3 uid="uid://xpi6iaaxexkr"]
 
-[ext_resource type="Texture2D" uid="uid://btgehwx4dven5" path="res://art/platform.png" id="1_ba0x2"]
-[ext_resource type="Script" uid="uid://dscswfq3kdol0" path="res://scenes/platform.gd" id="1_nlgqw"]
+[ext_resource type="Texture2D" uid="uid://cwligifd3i4vh" path="res://art/platform.png" id="1_ba0x2"]
+[ext_resource type="Script" uid="uid://dscswfq3kdol0" path="res://scripts/platform.gd" id="1_nlgqw"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nlgqw"]
-radius = 2.4
-height = 27.2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlgqw"]
+size = Vector2(26, 3.94583)
 
-[node name="platform" type="StaticBody2D"]
+[node name="platform" type="AnimatableBody2D"]
 scale = Vector2(6, 6)
 script = ExtResource("1_nlgqw")
 
@@ -18,6 +17,6 @@ region_enabled = true
 region_rect = Rect2(1.21282, 12.9669, 27.9589, 16.0238)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2.4)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_nlgqw")
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_nlgqw")
+one_way_collision = true
