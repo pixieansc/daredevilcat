@@ -1,4 +1,6 @@
 extends Node
 
-var bg_speed = 40
-var loop = 1	   # how many cycles there have been
+# global variables
+
+var bg_speed = 30
+var loop = 0	   # how many cycles there have been

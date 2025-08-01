@@ -1,22 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://xpi6iaaxexkr"]
+[gd_scene load_steps=7 format=3 uid="uid://bq8pkvmq3mtj2"]
 
 [ext_resource type="Texture2D" uid="uid://cwligifd3i4vh" path="res://art/platform.png" id="1_ba0x2"]
 [ext_resource type="Script" uid="uid://dscswfq3kdol0" path="res://scripts/platform.gd" id="1_nlgqw"]
+[ext_resource type="Texture2D" uid="uid://bj5rtduyx8g3i" path="res://art/platform - long.png" id="2_nlgqw"]
+[ext_resource type="Texture2D" uid="uid://cimacmtprikpi" path="res://art/platform-med.png" id="3_n1ckp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u7qrw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nlgqw")
+}],
+"loop": true,
+"name": &"long",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_n1ckp")
+}],
+"loop": true,
+"name": &"med",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ba0x2")
+}],
+"loop": true,
+"name": &"short",
+"speed": 1.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlgqw"]
-size = Vector2(26, 3.94583)
+resource_local_to_scene = true
+size = Vector2(87.5, 3)
 
-[node name="platform" type="AnimatableBody2D"]
+[node name="platform" type="StaticBody2D"]
 scale = Vector2(6, 6)
 script = ExtResource("1_nlgqw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_ba0x2")
-region_enabled = true
-region_rect = Rect2(1.21282, 12.9669, 27.9589, 16.0238)
+sprite_frames = SubResource("SpriteFrames_u7qrw")
+animation = &"short"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0.5, 6)
 shape = SubResource("RectangleShape2D_nlgqw")
 one_way_collision = true
