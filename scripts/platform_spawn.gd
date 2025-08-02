@@ -5,7 +5,7 @@ extends Node2D
 var height = 0
 var rng = RandomNumberGenerator.new()
 @onready var platform = preload("res://scenes/platform.tscn")
-@export var spawn_speed = 2.3
+@export var spawn_speed = 2.5
 
 func _ready() -> void:
 	# populates screen with platforms
@@ -27,7 +27,7 @@ func create_platform(xcoord):
 	var p = platform.instantiate()
 	var p_size = rng.randi_range(1, 2)
 	p._initiate(p_size) # initiate long
-	p.position = Vector2(xcoord + randi_range(-70, 70), 225 + 200 * height + rng.randi_range(0, 50))
+	p.position = Vector2(xcoord + randi_range(-70, 70), 225 + 200 * height)
 	add_child(p)
 	
 	var p_short = platform.instantiate()

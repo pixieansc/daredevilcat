@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0eqamo1dc5y5"
-path="res://.godot/imported/bullet.png-7adc94fbe6e31c193382926bba42bd83.ctex"
+uid="uid://bmw8ulfgbelke"
+path="res://.godot/imported/devil-health-prog.png-f8ab75780b4f33549deeeab83f7c17e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/bullet.png"
-dest_files=["res://.godot/imported/bullet.png-7adc94fbe6e31c193382926bba42bd83.ctex"]
+source_file="res://art/devil-health-prog.png"
+dest_files=["res://.godot/imported/devil-health-prog.png-f8ab75780b4f33549deeeab83f7c17e5.ctex"]
 
 [params]
 

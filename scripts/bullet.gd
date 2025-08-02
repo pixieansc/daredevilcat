@@ -6,6 +6,7 @@ var direction = Vector2.LEFT
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
 
+
 func _process(delta: float) -> void:
 	position += direction * speed * delta
 	position.x -= Global.bg_speed * delta * 10
@@ -15,5 +16,5 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("dnfs")
+	body.take_damage()
 	queue_free()

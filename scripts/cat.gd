@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 var bullet = preload("res://scenes/bullet.tscn")
 
-const SPEED = 500
+var SPEED = 500
 const JUMP_VELOCITY = -600.0
-const DASH = 3
+const DASH = 2.5
 const FRICTION = 0.5
 const ACC = 0.25
 
@@ -12,6 +12,7 @@ var jump_count = 0
 var is_dashing = false
 var is_shooting = false
 
+var health = 3
 
 func _physics_process(delta: float) -> void: #movement of cat !!
 	position.x -= Global.bg_speed * delta * 10
@@ -46,7 +47,7 @@ func _physics_process(delta: float) -> void: #movement of cat !!
 	# dashes :0
 	if Input.is_action_just_pressed("dash") and not is_dashing:
 		is_dashing = true
-		await get_tree().create_timer(0.15, true).timeout
+		await get_tree().create_timer(0.1, true).timeout
 		is_dashing = false
 		
 	if is_dashing:
@@ -77,7 +78,28 @@ func shoot():
 	var b = bullet.instantiate()
 	b.position = Vector2(position.x + 30 if not $anim.flip_h else position.x - 20, position.y + 20)
 	b.direction = Vector2.RIGHT if not $anim.flip_h else Vector2.LEFT
+	b.speed = SPEED + 100 
 	get_parent().add_child(b)
 	
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.1).timeout
 	is_shooting = false
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("death") or area.get_parent().is_in_group("death"):
+		health -= 1
+		get_parent().get_node("status").rm_heart()
+		
+		# respawn
+		set_physics_process(false)
+		$anim.play("jump")
+		$AnimationPlayer.play("flash")
+		position = Vector2(1000, 150)
+		velocity = Vector2.ZERO
+		await get_tree().create_timer(1).timeout
+		set_physics_process(true)
+			
+		if health == 0: 
+			health = 3 
+			get_parent().get_node("status").respawn()
+			#DEAThHHHH

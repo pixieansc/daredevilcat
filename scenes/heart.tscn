@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://d134eh7ho4v6w"]
+
+[ext_resource type="Texture2D" uid="uid://briobjnjxusmj" path="res://art/heart.png" id="1_cixvg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v30as"]
+atlas = ExtResource("1_cixvg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycbwg"]
+atlas = ExtResource("1_cixvg")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_krgnv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v30as")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycbwg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="heart" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+custom_minimum_size = Vector2(46, 48)
+offset_right = 46.0
+offset_bottom = 48.0
+scale = Vector2(3, 3)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(24, 23.3333)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_krgnv")
+autoplay = "default"
+frame_progress = 0.903371
