@@ -183,3 +183,13 @@ animation = &"blue"
 libraries = {
 &"": SubResource("AnimationLibrary_h4ldw")
 }
+
+[node name="atk_time" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="atk_interval" type="Timer" parent="."]
+wait_time = 0.75
+
+[connection signal="timeout" from="atk_time" to="." method="_on_atk_time_timeout"]
+[connection signal="timeout" from="atk_interval" to="." method="_on_atk_interval_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bifjivmexveyb"]
+[gd_scene load_steps=15 format=3 uid="uid://bifjivmexveyb"]
 
 [ext_resource type="Script" uid="uid://5jns3kp5ypqg" path="res://scripts/main.gd" id="1_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://domn4rl00v85" path="res://art/parallax1.png" id="1_tbgi4"]
@@ -9,8 +9,7 @@
 [ext_resource type="Script" uid="uid://bd542ksptrhtj" path="res://scripts/platform_spawn.gd" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://5xghjpcfjbo0" path="res://scenes/cat.tscn" id="8_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://cfl65rha1p34a" path="res://scenes/devil.tscn" id="9_eb6dy"]
-[ext_resource type="Script" uid="uid://cubpy68qt6glm" path="res://scenes/status.gd" id="13_a8y0u"]
-[ext_resource type="PackedScene" uid="uid://bd1ihhqfa7c23" path="res://scenes/ember.tscn" id="13_trceg"]
+[ext_resource type="Script" uid="uid://cubpy68qt6glm" path="res://scripts/status.gd" id="13_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://b7dxp5453ri50" path="res://art/devil-health-under.png" id="17_0ld40"]
 [ext_resource type="Texture2D" uid="uid://bmw8ulfgbelke" path="res://art/devil-health-prog.png" id="18_gqmmt"]
 
@@ -76,9 +75,6 @@ one_shot = true
 [node name="cat" parent="." instance=ExtResource("8_eb6dy")]
 position = Vector2(250, 220)
 
-[node name="devil" parent="." instance=ExtResource("9_eb6dy")]
-position = Vector2(-270, 300)
-
 [node name="stage_timer" type="Timer" parent="."]
 one_shot = true
 
@@ -141,8 +137,8 @@ grow_horizontal = 0
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="ember" parent="." instance=ExtResource("13_trceg")]
-position = Vector2(174, 178)
+[node name="devil" parent="." instance=ExtResource("9_eb6dy")]
+position = Vector2(-280, 300)
 
 [connection signal="timeout" from="platform_spawn/spawn_timer" to="platform_spawn" method="_on_timer_timeout"]
 [connection signal="timeout" from="stage_timer" to="." method="_on_stage_timer_timeout"]

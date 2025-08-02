@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bd1ihhqfa7c23"]
 
 [ext_resource type="Texture2D" uid="uid://pq13luus6886" path="res://art/fire.png" id="1_fibi0"]
-[ext_resource type="Script" uid="uid://j7lbpppm6pk3" path="res://scenes/ember.gd" id="1_p4v4c"]
+[ext_resource type="Script" uid="uid://j7lbpppm6pk3" path="res://scripts/ember.gd" id="1_p4v4c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kiceu"]
 atlas = ExtResource("1_fibi0")
@@ -40,17 +40,18 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kiceu"]
-radius = 4.0
-height = 8.33333
+radius = 2.375
+height = 5.75
 
-[node name="ember" type="Area2D"]
+[node name="ember" type="Area2D" groups=["death"]]
 texture_filter = 1
-scale = Vector2(6, 6)
+scale = Vector2(8, 8)
 script = ExtResource("1_p4v4c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tt1hb")
-frame_progress = 0.20583
+frame_progress = 0.805018
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("CapsuleShape2D_kiceu")

@@ -90,13 +90,17 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		health -= 1
 		get_parent().get_node("status").rm_heart()
 		
-		# respawn
+		# respawn & immunity frames
 		set_physics_process(false)
+		$hitbox.set_deferred("monitoring", false) 
+		
 		$anim.play("jump")
 		$AnimationPlayer.play("flash")
 		position = Vector2(1000, 150)
 		velocity = Vector2.ZERO
 		await get_tree().create_timer(1).timeout
+		
+		$hitbox.set_deferred("monitoring", true) 
 		set_physics_process(true)
 			
 		if health == 0: 

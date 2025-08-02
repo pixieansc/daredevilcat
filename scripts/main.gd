@@ -20,7 +20,7 @@ func _on_stage_timer_timeout() -> void:
 	# animations
 	var tw = create_tween().set_parallel(true)
 	tw.tween_property($ui.get_node("devil_health"), "position:y", 550, 0.75).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tw.tween_property($devil, "position:x", 100, 1).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
+	tw.tween_property($devil, "position:x", 120, 1).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 	
 	# edit world speed
 	Global.bg_speed = 25
@@ -34,7 +34,7 @@ func start_runner():
 	
 	run_timer.start(5)
 	var tw = create_tween().set_parallel(true)
-	tw.tween_property($devil, "position:x", -270, 1).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
+	tw.tween_property($devil, "position:x", -280, 0.5).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN)
 	tw.tween_property($ui.get_node("devil_health"), "position:y", 660, 0.75).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	
 	var speed_tw = create_tween().set_parallel(true)

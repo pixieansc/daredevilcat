@@ -11,9 +11,10 @@ func add_heart():
 	
 
 func rm_heart():
-	var rm = $heart_box.get_child($heart_box.get_child_count() - 1)
-	$heart_box.remove_child(rm)
-	rm.queue_free()
+	if $heart_box.get_child_count() - 1 >= 0:
+		var rm = $heart_box.get_child($heart_box.get_child_count() - 1)
+		$heart_box.remove_child(rm)
+		rm.queue_free()
 
 	
 func respawn():
