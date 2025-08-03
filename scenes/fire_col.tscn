@@ -88,7 +88,7 @@ script = ExtResource("1_btwwv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pep5r")
-frame_progress = 0.935838
+frame_progress = 0.15324
 flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

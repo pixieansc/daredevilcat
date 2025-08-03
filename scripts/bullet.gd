@@ -2,6 +2,7 @@ extends Area2D
 
 var speed = 700
 var direction = Vector2.LEFT
+var dmg = 10
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
@@ -16,5 +17,5 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	body.take_damage()
+	body.take_damage(dmg)
 	queue_free()

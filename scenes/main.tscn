@@ -14,18 +14,23 @@
 [ext_resource type="Texture2D" uid="uid://bmw8ulfgbelke" path="res://art/devil-health-prog.png" id="18_gqmmt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eb6dy"]
-size = Vector2(31, 697)
+size = Vector2(31, 894.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dp3eg"]
-size = Vector2(1218, 408)
+size = Vector2(1246, 47)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_eb6dy")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_right = 1164.0
+offset_bottom = 71.0
+
 [node name="background" type="ParallaxBackground" parent="."]
-offset = Vector2(0, 250)
+offset = Vector2(0, 350)
 scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 0, 250)
+transform = Transform2D(4, 0, 0, 4, 0, 350)
 script = ExtResource("1_tefeu")
 
 [node name="ParallaxLayer1" type="ParallaxLayer" parent="background"]
@@ -83,10 +88,10 @@ offset_bottom = 23.0
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-offset_left = 40.0
-offset_top = 660.0
-offset_right = 219.0
-offset_bottom = 677.0
+offset_left = 27.0
+offset_top = 789.0
+offset_right = 206.0
+offset_bottom = 806.0
 scale = Vector2(6, 3)
 max_value = 1000.0
 value = 1000.0
@@ -105,17 +110,17 @@ one_shot = true
 [node name="border" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="border"]
-position = Vector2(-10, 339)
+position = Vector2(-10, 382.875)
 shape = SubResource("RectangleShape2D_eb6dy")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="border"]
-position = Vector2(1163, 331)
+position = Vector2(1163, 385.75)
 shape = SubResource("RectangleShape2D_eb6dy")
 
 [node name="pit" type="Area2D" parent="border" groups=["death"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/pit"]
-position = Vector2(570, 916)
+position = Vector2(579, 826.5)
 shape = SubResource("RectangleShape2D_dp3eg")
 
 [node name="status" type="Node2D" parent="."]
@@ -135,10 +140,10 @@ size_flags_horizontal = 3
 alignment = 2
 
 [node name="cat" parent="." instance=ExtResource("8_eb6dy")]
-position = Vector2(250, 220)
+position = Vector2(206, 318)
 
 [node name="devil" parent="." instance=ExtResource("9_eb6dy")]
-position = Vector2(-280, 350)
+position = Vector2(-315, 453)
 
 [connection signal="timeout" from="platform_spawn/spawn_timer" to="platform_spawn" method="_on_timer_timeout"]
 [connection signal="timeout" from="stage_timer" to="." method="_on_stage_timer_timeout"]

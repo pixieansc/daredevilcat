@@ -2,7 +2,7 @@ extends StaticBody2D
 
 var ember = preload("res://scenes/ember.tscn")
 var flame = preload("res://scenes/fire_col.tscn")
-
+var damage = preload("res://scenes/dmg.tscn")
 
 var health = 1000
 var rng = RandomNumberGenerator.new()
@@ -20,10 +20,16 @@ func start():
 	_on_atk_time_timeout()
 	
 	
-func take_damage():
+func take_damage(dmg):
 	$AnimationPlayer.play("flash")
-	health -= 15
+	
+	health -= dmg
 	get_parent().get_node("ui/devil_health").value = health
+	
+	#var d = damage.instantiate()
+	#d.position = Vector2(10, -25)
+	#d.text = str(dmg)
+	#add_child(d)
 	
 	if health <= 10:
 		# boss dead !!!
@@ -60,7 +66,7 @@ func _on_atk_interval_timeout() -> void:
 
 func ember_fall():
 	var e = ember.instantiate()
-	e.position = Vector2(800 + rng.randi_range(0, 2) * 300, -100)
+	e.position = Vector2(700 + rng.randi_range(0, 2) * 300, -100)
 	get_parent().add_child(e)
 	
 
@@ -69,9 +75,9 @@ func flame_throw(vertical):
 	f.vertical = vertical
 	
 	if vertical:
-		f.position = Vector2(800 + rng.randi_range(0, 2) * 200, 425)
+		f.position = Vector2(800 + rng.randi_range(0, 2) * 200, 620)
 	else: 
-		f.position = Vector2(930, 175 + rng.randi_range(0, 1) * 200)
+		f.position = Vector2(930, 350 + rng.randi_range(0, 1) * 200)
 	
 	
 	get_parent().add_child(f)

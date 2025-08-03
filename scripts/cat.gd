@@ -123,6 +123,6 @@ func immunity(respawn):
 	
 	set_physics_process(true)
 	
-	if position.y > 750:
+	if position.y > 950:
 		immunity(true) # respawn automatically w/o losing heart
 	
