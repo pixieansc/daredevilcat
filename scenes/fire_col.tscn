@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://bp6sgfsi12wdp"]
 
 [ext_resource type="Script" uid="uid://b7njgmhmgrhjs" path="res://scripts/fire_col.gd" id="1_btwwv"]
-[ext_resource type="Texture2D" uid="uid://b5or31kmrp2kp" path="res://art/flame.png" id="1_i0tvc"]
+[ext_resource type="Texture2D" uid="uid://di6kan2fts1iu" path="res://art/flame.png" id="1_i0tvc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btwwv"]
 atlas = ExtResource("1_i0tvc")
@@ -88,7 +88,7 @@ script = ExtResource("1_btwwv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pep5r")
-frame_progress = 0.19088
+frame_progress = 0.935838
 flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

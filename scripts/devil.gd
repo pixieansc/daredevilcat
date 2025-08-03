@@ -44,7 +44,7 @@ func _on_atk_time_timeout() -> void:
 		$atk_time.start() #start timer again
 		
 		if attack == 1:
-			$atk_interval.start(0.75)
+			$atk_interval.start(1)
 			$atk_time.start(5)
 		elif attack == 2 or attack == 3:
 			$atk_interval.start(3)

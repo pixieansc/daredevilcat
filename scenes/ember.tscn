@@ -1,24 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bd1ihhqfa7c23"]
+[gd_scene load_steps=9 format=3 uid="uid://bd1ihhqfa7c23"]
 
-[ext_resource type="Texture2D" uid="uid://pq13luus6886" path="res://art/fire.png" id="1_fibi0"]
 [ext_resource type="Script" uid="uid://j7lbpppm6pk3" path="res://scripts/ember.gd" id="1_p4v4c"]
-[ext_resource type="Texture2D" uid="uid://d0ptflh6vjdte" path="res://art/ember.png" id="3_kiceu"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kiceu"]
-atlas = ExtResource("1_fibi0")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rn7pl"]
-atlas = ExtResource("1_fibi0")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_edtna"]
-atlas = ExtResource("1_fibi0")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gpn8c"]
-atlas = ExtResource("1_fibi0")
-region = Rect2(96, 0, 16, 16)
+[ext_resource type="Texture2D" uid="uid://dilvte2tnlxi3" path="res://art/ember.png" id="3_kiceu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d38cc"]
 atlas = ExtResource("3_kiceu")
@@ -38,23 +21,6 @@ region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tt1hb"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kiceu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rn7pl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_edtna")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gpn8c")
-}],
-"loop": true,
-"name": &"default",
-"speed": 6.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d38cc")
