@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bd1ihhqfa7c23"]
+[gd_scene load_steps=14 format=3 uid="uid://bd1ihhqfa7c23"]
 
 [ext_resource type="Texture2D" uid="uid://pq13luus6886" path="res://art/fire.png" id="1_fibi0"]
 [ext_resource type="Script" uid="uid://j7lbpppm6pk3" path="res://scripts/ember.gd" id="1_p4v4c"]
+[ext_resource type="Texture2D" uid="uid://d0ptflh6vjdte" path="res://art/ember.png" id="3_kiceu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kiceu"]
 atlas = ExtResource("1_fibi0")
@@ -18,6 +19,22 @@ region = Rect2(48, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gpn8c"]
 atlas = ExtResource("1_fibi0")
 region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d38cc"]
+atlas = ExtResource("3_kiceu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s02f"]
+atlas = ExtResource("3_kiceu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt1hb"]
+atlas = ExtResource("3_kiceu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u1ur"]
+atlas = ExtResource("3_kiceu")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tt1hb"]
 animations = [{
@@ -37,20 +54,38 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d38cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s02f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt1hb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u1ur")
+}],
+"loop": true,
+"name": &"outline",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kiceu"]
-radius = 2.375
-height = 5.75
+radius = 3.55556
+height = 7.11111
 
-[node name="ember" type="Area2D" groups=["death"]]
+[node name="ember" type="Area2D" groups=["projectile"]]
 texture_filter = 1
 scale = Vector2(8, 8)
 script = ExtResource("1_p4v4c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tt1hb")
-frame_progress = 0.805018
+animation = &"outline"
+autoplay = "outline"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

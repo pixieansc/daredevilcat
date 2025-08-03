@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnmxdwi2t3dhm"
-path="res://.godot/imported/blue-devil.png-00b8fdf7759801862711d63b1ef8b6e3.ctex"
+uid="uid://b5or31kmrp2kp"
+path="res://.godot/imported/flame.png-f52b4851a410b1c0e660ae756b1afc1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/blue-devil.png"
-dest_files=["res://.godot/imported/blue-devil.png-00b8fdf7759801862711d63b1ef8b6e3.ctex"]
+source_file="res://art/flame.png"
+dest_files=["res://.godot/imported/flame.png-f52b4851a410b1c0e660ae756b1afc1d.ctex"]
 
 [params]
 

@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://bp6sgfsi12wdp"]
+
+[ext_resource type="Script" uid="uid://b7njgmhmgrhjs" path="res://scripts/fire_col.gd" id="1_btwwv"]
+[ext_resource type="Texture2D" uid="uid://b5or31kmrp2kp" path="res://art/flame.png" id="1_i0tvc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btwwv"]
+atlas = ExtResource("1_i0tvc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pfcj"]
+atlas = ExtResource("1_i0tvc")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rply"]
+atlas = ExtResource("1_i0tvc")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0tvc"]
+atlas = ExtResource("1_i0tvc")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sexn"]
+atlas = ExtResource("1_i0tvc")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkw7r"]
+atlas = ExtResource("1_i0tvc")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bxga"]
+atlas = ExtResource("1_i0tvc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx1vf"]
+atlas = ExtResource("1_i0tvc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pep5r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btwwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pfcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rply")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0tvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sexn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkw7r")
+}],
+"loop": true,
+"name": &"end",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bxga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx1vf")
+}],
+"loop": true,
+"name": &"start",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_llrej"]
+height = 61.4286
+
+[node name="fire_col" type="Area2D" groups=["projectile"]]
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(7, 7)
+script = ExtResource("1_btwwv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pep5r")
+frame_progress = 0.19088
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.42857, 2)
+shape = SubResource("CapsuleShape2D_llrej")
+disabled = true

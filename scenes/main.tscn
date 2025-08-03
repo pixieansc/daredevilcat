@@ -17,7 +17,7 @@
 size = Vector2(31, 697)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dp3eg"]
-size = Vector2(1218, 23.3125)
+size = Vector2(1218, 408)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_eb6dy")
@@ -66,18 +66,6 @@ texture_filter = 1
 texture_repeat = 2
 texture = ExtResource("4_tipki")
 
-[node name="platform_spawn" type="Node2D" parent="."]
-script = ExtResource("6_o6xl0")
-
-[node name="spawn_timer" type="Timer" parent="platform_spawn"]
-one_shot = true
-
-[node name="cat" parent="." instance=ExtResource("8_eb6dy")]
-position = Vector2(250, 220)
-
-[node name="stage_timer" type="Timer" parent="."]
-one_shot = true
-
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -105,6 +93,15 @@ value = 1000.0
 texture_under = ExtResource("17_0ld40")
 texture_progress = ExtResource("18_gqmmt")
 
+[node name="platform_spawn" type="Node2D" parent="."]
+script = ExtResource("6_o6xl0")
+
+[node name="spawn_timer" type="Timer" parent="platform_spawn"]
+one_shot = true
+
+[node name="stage_timer" type="Timer" parent="."]
+one_shot = true
+
 [node name="border" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="border"]
@@ -118,7 +115,7 @@ shape = SubResource("RectangleShape2D_eb6dy")
 [node name="pit" type="Area2D" parent="border" groups=["death"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/pit"]
-position = Vector2(570, 672.344)
+position = Vector2(570, 916)
 shape = SubResource("RectangleShape2D_dp3eg")
 
 [node name="status" type="Node2D" parent="."]
@@ -137,8 +134,11 @@ grow_horizontal = 0
 size_flags_horizontal = 3
 alignment = 2
 
+[node name="cat" parent="." instance=ExtResource("8_eb6dy")]
+position = Vector2(250, 220)
+
 [node name="devil" parent="." instance=ExtResource("9_eb6dy")]
-position = Vector2(-280, 300)
+position = Vector2(-280, 350)
 
 [connection signal="timeout" from="platform_spawn/spawn_timer" to="platform_spawn" method="_on_timer_timeout"]
 [connection signal="timeout" from="stage_timer" to="." method="_on_stage_timer_timeout"]

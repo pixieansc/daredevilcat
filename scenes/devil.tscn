@@ -4,15 +4,7 @@
 [ext_resource type="Shader" uid="uid://etgog26ndots" path="res://shaders/cat.gdshader" id="2_fvmev"]
 [ext_resource type="Texture2D" uid="uid://d4iht4hpyvw7a" path="res://art/devil.png" id="2_okdpc"]
 [ext_resource type="Texture2D" uid="uid://cbnu0v5lrwmvp" path="res://art/devil-outline.png" id="3_okdpc"]
-[ext_resource type="Texture2D" uid="uid://cnx68eba2o77l" path="res://art/blue-devil.png" id="3_yjn3n"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2f3dj"]
-radius = 136.0
-height = 432.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eb6dy"]
-radius = 185.0
-height = 558.0
+[ext_resource type="Texture2D" uid="uid://cnmxdwi2t3dhm" path="res://art/blue-devil.png" id="3_yjn3n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yjn3n"]
 shader = ExtResource("2_fvmev")
@@ -120,6 +112,14 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2f3dj"]
+radius = 9.0
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eb6dy"]
+radius = 18.0
+height = 48.0
+
 [sub_resource type="Animation" id="Animation_1xdfg"]
 length = 0.001
 tracks/0/type = "value"
@@ -158,26 +158,24 @@ _data = {
 }
 
 [node name="devil" type="StaticBody2D" groups=["death"]]
+scale = Vector2(9, 9)
 collision_layer = 3
 script = ExtResource("1_dn2kn")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_yjn3n")
+sprite_frames = SubResource("SpriteFrames_pm3ni")
+animation = &"blue"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 34)
+position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_2f3dj")
 
 [node name="hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(0, 31)
 shape = SubResource("CapsuleShape2D_eb6dy")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_yjn3n")
-position = Vector2(1, 52)
-scale = Vector2(9, 9)
-sprite_frames = SubResource("SpriteFrames_pm3ni")
-animation = &"blue"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -189,7 +187,6 @@ wait_time = 5.0
 one_shot = true
 
 [node name="atk_interval" type="Timer" parent="."]
-wait_time = 0.75
 
 [connection signal="timeout" from="atk_time" to="." method="_on_atk_time_timeout"]
 [connection signal="timeout" from="atk_interval" to="." method="_on_atk_interval_timeout"]

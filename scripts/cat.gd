@@ -31,7 +31,10 @@ func _physics_process(delta: float) -> void: #movement of cat !!
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta * 1.2
-		
+	
+	if Input.is_action_just_pressed("down") and is_on_floor():
+		go_down()
+	
 	# left right movement
 	var direction := Input.get_axis("left", "right")
 		
@@ -43,16 +46,16 @@ func _physics_process(delta: float) -> void: #movement of cat !!
 			position.x += Global.bg_speed * delta * 10	
 	else:
 		velocity.x = lerp(velocity.x, 0.0, FRICTION)
-
-	# dashes :0
-	if Input.is_action_just_pressed("dash") and not is_dashing:
-		is_dashing = true
-		await get_tree().create_timer(0.1, true).timeout
-		is_dashing = false
-		
-	if is_dashing:
-		velocity.x = SPEED * DASH if not $anim.flip_h else - (SPEED * DASH)
-		velocity.y = 0
+#
+	## dashes :0
+	#if Input.is_action_just_pressed("dash") and not is_dashing:
+		#is_dashing = true
+		#await get_tree().create_timer(0.1, true).timeout
+		#is_dashing = false
+		#
+	#if is_dashing:
+		#velocity.x = SPEED * DASH if not $anim.flip_h else - (SPEED * DASH)
+		#velocity.y = 0
 
 	# gun !!!
 	if not is_shooting and Input.is_action_just_pressed("gun") and velocity.y == 0:
@@ -71,7 +74,15 @@ func _physics_process(delta: float) -> void: #movement of cat !!
 		elif $anim.animation != "run_gun": $anim.play("run")
 		
 	move_and_slide()
-	
+
+
+func go_down():
+	velocity.y = 700
+	$CollisionShape2D.set_deferred("disabled", true)
+	await get_tree().create_timer(0.1).timeout
+	$CollisionShape2D.set_deferred("disabled", false)
+
+
 func shoot():
 	is_shooting = true
 	
@@ -86,24 +97,32 @@ func shoot():
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("death") or area.get_parent().is_in_group("death"):
+	if area.is_in_group("death") or area.get_parent().is_in_group("death") or area.is_in_group("projectile"):
 		health -= 1
 		get_parent().get_node("status").rm_heart()
-		
-		# respawn & immunity frames
-		set_physics_process(false)
-		$hitbox.set_deferred("monitoring", false) 
-		
-		$anim.play("jump")
-		$AnimationPlayer.play("flash")
-		position = Vector2(1000, 150)
-		velocity = Vector2.ZERO
-		await get_tree().create_timer(1).timeout
-		
-		$hitbox.set_deferred("monitoring", true) 
-		set_physics_process(true)
+	
+		immunity(not area.is_in_group("projectile"))
 			
 		if health == 0: 
 			health = 3 
 			get_parent().get_node("status").respawn()
 			#DEAThHHHH
+
+func immunity(respawn):
+	# respawn & immunity frames
+	if respawn:
+		set_physics_process(false)
+		$anim.play("jump")
+		position = Vector2(1000, 150)
+		velocity = Vector2.ZERO
+	
+	$hitbox.set_deferred("monitoring", false) 
+	$AnimationPlayer.play("flash")
+	await get_tree().create_timer(1.2).timeout
+	$hitbox.set_deferred("monitoring", true) 
+	
+	set_physics_process(true)
+	
+	if position.y > 750:
+		immunity(true) # respawn automatically w/o losing heart
+	

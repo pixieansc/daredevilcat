@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnmxdwi2t3dhm"
-path="res://.godot/imported/blue-devil.png-00b8fdf7759801862711d63b1ef8b6e3.ctex"
+uid="uid://d0ptflh6vjdte"
+path="res://.godot/imported/ember.png-ea5be9dca8fe1268e1d3636305d634e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/blue-devil.png"
-dest_files=["res://.godot/imported/blue-devil.png-00b8fdf7759801862711d63b1ef8b6e3.ctex"]
+source_file="res://art/ember.png"
+dest_files=["res://.godot/imported/ember.png-ea5be9dca8fe1268e1d3636305d634e6.ctex"]
 
 [params]
 
