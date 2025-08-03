@@ -1,14 +1,31 @@
-[gd_scene load_steps=25 format=3 uid="uid://cfl65rha1p34a"]
+[gd_scene load_steps=30 format=3 uid="uid://cfl65rha1p34a"]
 
 [ext_resource type="Script" uid="uid://djrsnvcs4tjag" path="res://scripts/devil.gd" id="1_dn2kn"]
 [ext_resource type="Shader" uid="uid://etgog26ndots" path="res://shaders/cat.gdshader" id="2_fvmev"]
 [ext_resource type="Texture2D" uid="uid://d4iht4hpyvw7a" path="res://art/devil.png" id="2_okdpc"]
+[ext_resource type="Texture2D" uid="uid://pgl4rmtncb8p" path="res://art/angry_devil.png" id="3_fwdco"]
 [ext_resource type="Texture2D" uid="uid://cbnu0v5lrwmvp" path="res://art/devil-outline.png" id="3_okdpc"]
 [ext_resource type="Texture2D" uid="uid://cnmxdwi2t3dhm" path="res://art/blue-devil.png" id="3_yjn3n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yjn3n"]
 shader = ExtResource("2_fvmev")
 shader_parameter/flash_pct = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywkj2"]
+atlas = ExtResource("3_fwdco")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvw0w"]
+atlas = ExtResource("3_fwdco")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpkuw"]
+atlas = ExtResource("3_fwdco")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4g72"]
+atlas = ExtResource("3_fwdco")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4ldw"]
 atlas = ExtResource("3_yjn3n")
@@ -60,6 +77,23 @@ region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pm3ni"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywkj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvw0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpkuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4g72")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h4ldw")
@@ -166,7 +200,7 @@ script = ExtResource("1_dn2kn")
 texture_filter = 1
 material = SubResource("ShaderMaterial_yjn3n")
 sprite_frames = SubResource("SpriteFrames_pm3ni")
-animation = &"blue"
+animation = &"angry"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)

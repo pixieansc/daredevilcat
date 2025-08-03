@@ -78,7 +78,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_llrej"]
-height = 61.4286
+radius = 8.14287
+height = 55.4286
 
 [node name="fire_col" type="Area2D" groups=["projectile"]]
 texture_filter = 1
@@ -92,6 +93,6 @@ frame_progress = 0.15324
 flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.42857, 2)
+position = Vector2(1.71427, -3.57143)
 shape = SubResource("CapsuleShape2D_llrej")
 disabled = true

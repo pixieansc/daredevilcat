@@ -1,6 +1,7 @@
 extends Label
 
 func _ready():
+	pivot_offset = Vector2(size.x / 2, size.y / 2)
 	animate()
 	
 	

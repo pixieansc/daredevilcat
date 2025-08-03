@@ -12,18 +12,19 @@ var jump_count = 0
 var is_dashing = false
 var is_shooting = false
 
+var power = 10
 var health = 3
 
 func _physics_process(delta: float) -> void: #movement of cat !!
 	position.x -= Global.bg_speed * delta * 10
-
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 		jump_count = 1
-	elif Input.is_action_just_pressed("jump") and jump_count < 2:
+		velocity.y = JUMP_VELOCITY	
+	elif Input.is_action_just_pressed("jump") and jump_count == 1:
+		jump_count = 2 
 		velocity.y = JUMP_VELOCITY
-		jump_count = 2
 
 	if Input.is_action_just_released("jump") and velocity.y < 0.0:
 		velocity.y *= 0.5
@@ -31,6 +32,7 @@ func _physics_process(delta: float) -> void: #movement of cat !!
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta * 1.2
+		
 	
 	if Input.is_action_just_pressed("down") and is_on_floor():
 		go_down()
@@ -38,7 +40,7 @@ func _physics_process(delta: float) -> void: #movement of cat !!
 	# left right movement
 	var direction := Input.get_axis("left", "right")
 		
-	if direction and not is_dashing:		
+	if direction:		
 		velocity.x = lerp(velocity.x, direction * SPEED, ACC)
 		$anim.flip_h = direction < 0
 		
@@ -62,9 +64,7 @@ func _physics_process(delta: float) -> void: #movement of cat !!
 		shoot()
 		
 	# animation!
-	if is_dashing: 
-		$anim.play("dash")
-	elif velocity.y != 0:
+	if velocity.y != 0:
 		$anim.play("jump")
 	elif not direction:
 		if is_shooting: $anim.play("idle_gun")
@@ -77,7 +77,7 @@ func _physics_process(delta: float) -> void: #movement of cat !!
 
 
 func go_down():
-	velocity.y = 700
+	velocity.y = - JUMP_VELOCITY
 	$CollisionShape2D.set_deferred("disabled", true)
 	await get_tree().create_timer(0.1).timeout
 	$CollisionShape2D.set_deferred("disabled", false)
@@ -89,10 +89,11 @@ func shoot():
 	var b = bullet.instantiate()
 	b.position = Vector2(position.x + 30 if not $anim.flip_h else position.x - 20, position.y + 20)
 	b.direction = Vector2.RIGHT if not $anim.flip_h else Vector2.LEFT
+	b.dmg = power
 	b.speed = SPEED + 100 
 	get_parent().add_child(b)
 	
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.2).timeout
 	is_shooting = false
 
 
@@ -104,9 +105,8 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		immunity(not area.is_in_group("projectile"))
 			
 		if health == 0: 
-			health = 3 
-			get_parent().get_node("status").respawn()
-			#DEAThHHHH
+			get_parent().death()
+
 
 func immunity(respawn):
 	# respawn & immunity frames

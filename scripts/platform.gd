@@ -7,7 +7,7 @@ func _ready() -> void:
 	
 
 func _initiate(size):
-	$CollisionShape2D.shape.set_size(Vector2(28 + size * 30, 4))
+	$CollisionShape2D.shape.set_size(Vector2(28 + size * 31, 4))
 	
 	if size == 0:
 		$CollisionShape2D.position.y = 4

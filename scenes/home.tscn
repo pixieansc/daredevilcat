@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://hrlh1nqv1svm"]
+[gd_scene load_steps=46 format=3 uid="uid://hrlh1nqv1svm"]
 
 [ext_resource type="Script" uid="uid://c680ubqkubhp0" path="res://scripts/home.gd" id="1_o7pnx"]
 [ext_resource type="Texture2D" uid="uid://domn4rl00v85" path="res://art/parallax1.png" id="1_w18ys"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cyd7iwl6qnv87" path="res://art/pixil-frame-6.png" id="14_ppa51"]
 [ext_resource type="Texture2D" uid="uid://df3qsui1ecosv" path="res://art/pixil-frame-7.png" id="15_kc6b6"]
 [ext_resource type="Texture2D" uid="uid://cprnqg5pi320k" path="res://art/pixil-frame-1.png" id="16_jdxxw"]
+[ext_resource type="Theme" uid="uid://dlvwwysfx1nbt" path="res://art/theme.tres" id="18_aish6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yxilm"]
 atlas = ExtResource("2_reixx")
@@ -49,7 +50,7 @@ region = Rect2(528, 0, 88, 36)
 [sub_resource type="SpriteFrames" id="SpriteFrames_ip4d6"]
 animations = [{
 "frames": [{
-"duration": 10.0,
+"duration": 9.0,
 "texture": SubResource("AtlasTexture_yxilm")
 }, {
 "duration": 1.0,
@@ -303,11 +304,11 @@ texture = ExtResource("5_hhep5")
 
 [node name="title" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(588, 162)
+position = Vector2(598, 196)
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_ip4d6")
 autoplay = "default"
-frame_progress = 0.215168
+frame_progress = 0.875276
 
 [node name="fire" type="Node2D" parent="."]
 texture_filter = 1
@@ -317,6 +318,7 @@ script = ExtResource("7_4fycn")
 [node name="fire1" type="AnimatedSprite2D" parent="fire"]
 position = Vector2(20.4286, 82.8571)
 sprite_frames = SubResource("SpriteFrames_ppa51")
+autoplay = "default"
 frame = 11
 frame_progress = 1.0
 flip_h = true
@@ -324,6 +326,7 @@ flip_h = true
 [node name="fire2" type="AnimatedSprite2D" parent="fire"]
 position = Vector2(142, 82.7143)
 sprite_frames = SubResource("SpriteFrames_mg211")
+autoplay = "default"
 
 [node name="Timer" type="Timer" parent="fire"]
 wait_time = 3.0
@@ -331,13 +334,31 @@ autostart = true
 
 [node name="play" type="TextureButton" parent="."]
 texture_filter = 1
-offset_left = 427.0
-offset_top = 437.0
-offset_right = 463.0
-offset_bottom = 454.0
+offset_left = 437.0
+offset_top = 414.0
+offset_right = 473.0
+offset_bottom = 431.0
 scale = Vector2(7, 7)
 texture_normal = SubResource("AnimatedTexture_6k6s7")
 texture_pressed = ExtResource("16_jdxxw")
+
+[node name="hiscore" type="Label" parent="."]
+offset_left = 365.0
+offset_top = 658.0
+offset_right = 773.0
+offset_bottom = 708.0
+theme = ExtResource("18_aish6")
+theme_override_font_sizes/font_size = 50
+text = "hi-score: 0 loops"
+
+[node name="score" type="Label" parent="."]
+offset_left = 405.0
+offset_top = 579.0
+offset_right = 743.0
+offset_bottom = 629.0
+theme = ExtResource("18_aish6")
+theme_override_font_sizes/font_size = 50
+text = "score: 0 loops"
 
 [connection signal="timeout" from="fire/Timer" to="fire" method="_on_timer_timeout"]
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]

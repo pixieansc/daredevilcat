@@ -17,35 +17,42 @@ func _ready():
 
 func start():
 	get_parent().get_node("ui/devil_health").value = health
+	$hitbox.set_deferred("monitorable", true)
 	_on_atk_time_timeout()
 	
 	
 func take_damage(dmg):
 	$AnimationPlayer.play("flash")
-	
-	health -= dmg
-	get_parent().get_node("ui/devil_health").value = health
-	
 	var d = damage.instantiate()
 	d.position = Vector2(10, -20)
 	d.text = str(dmg)
 	add_child(d)
 	
-	if health <= 10:
+	if health <= dmg + 10 and health > 10:
 		# boss dead !!!
+		health -= dmg
+		Global.success_sound()
 		Global.loop += 1
+		
+		$hitbox.set_deferred("monitorable", false)
 		$atk_time.stop()
 		$atk_interval.stop()
 		get_parent().start_runner()
+	else:
+		health -= dmg
+	
+	get_parent().get_node("ui/devil_health").value = health
 	
 
 func _on_atk_time_timeout() -> void:
 	#take a break
+	$AnimatedSprite2D.play("blue")
 	$atk_interval.stop()
 	await get_tree().create_timer(3).timeout
 	
 	#plan next attack
-	if health >= 50:
+	if health >= get_parent().get_node("cat").power:
+		$AnimatedSprite2D.play("angry")
 		attack = rng.randi_range(1, 3)
 		$atk_time.start() #start timer again
 		
