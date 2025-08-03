@@ -40,7 +40,7 @@ func create_platform(xcoord):
 	p_short.position = Vector2(p.position.x + 600 - (p_size * 50), p.position.y + rng.randi_range(-25, 25))
 	
 	if runner:
-		var item_type = rng.randi_range(0, 5)
+		var item_type = rng.randi_range(0, 4)
 				
 		if item_type == 0 or item_type == 1:
 			var i = item.instantiate()

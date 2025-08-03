@@ -16,5 +16,8 @@ func _on_area_entered(area: Area2D) -> void:
 			cat.get_parent().get_node("status").add_heart()
 			cat.health += 1
 		
+		var tw = create_tween().tween_property(self, "scale", Vector2.ZERO, 0.25).set_trans(Tween.TRANS_QUINT)
+		await tw.finished
+		
 		queue_free()
 		

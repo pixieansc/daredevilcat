@@ -6,13 +6,12 @@ func _ready() -> void:
 	respawn()
 
 func add_heart():
-	print("sd")
 	var h = heart.instantiate()	
 	$heart_box.add_child(h)
 	$heart_box.move_child(h, 0)
 	
 	h.get_node("AnimatedSprite2D").scale = Vector2.ZERO
-	create_tween().tween_property(h.get_node("AnimatedSprite2D"), "scale", Vector2(3, 3), 0.5).set_trans(Tween.TRANS_BOUNCE)
+	create_tween().tween_property(h.get_node("AnimatedSprite2D"), "scale", Vector2(4, 4), 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 
 func rm_heart():

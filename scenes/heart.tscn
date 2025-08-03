@@ -20,13 +20,13 @@ animations = [{
 [node name="heart" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
 texture_filter = 1
-custom_minimum_size = Vector2(45, 45)
-offset_right = 45.0
-offset_bottom = 43.0
-pivot_offset = Vector2(22, 22)
+custom_minimum_size = Vector2(60, 60)
+offset_right = 60.0
+offset_bottom = 60.0
+pivot_offset = Vector2(30, 30)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(24, 24)
-scale = Vector2(3, 3)
+position = Vector2(32, 32)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_krgnv")
 frame_progress = 0.903371

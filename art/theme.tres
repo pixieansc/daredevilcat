@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dlvwwysfx1nbt"]
+
+[ext_resource type="FontFile" uid="uid://bjvfjbgrrmeos" path="res://art/pixel-font.ttf" id="1_mp86n"]
+
+[resource]
+Label/colors/font_color = Color(0.94902, 0.772549, 0.486275, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/font_sizes/font_size = 40
+Label/fonts/font = ExtResource("1_mp86n")

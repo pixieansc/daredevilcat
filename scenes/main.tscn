@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bifjivmexveyb"]
+[gd_scene load_steps=17 format=3 uid="uid://bifjivmexveyb"]
 
 [ext_resource type="Script" uid="uid://5jns3kp5ypqg" path="res://scripts/main.gd" id="1_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://domn4rl00v85" path="res://art/parallax1.png" id="1_tbgi4"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://bu8b3mx7guunr" path="res://art/parallax3.png" id="3_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://dm6bvx0dwog8i" path="res://art/parallax4.png" id="4_tipki"]
 [ext_resource type="Script" uid="uid://bd542ksptrhtj" path="res://scripts/platform_spawn.gd" id="6_o6xl0"]
+[ext_resource type="Theme" uid="uid://dlvwwysfx1nbt" path="res://art/theme.tres" id="7_trceg"]
 [ext_resource type="PackedScene" uid="uid://5xghjpcfjbo0" path="res://scenes/cat.tscn" id="8_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://c31t2ff37nplw" path="res://art/home-pressed.png" id="9_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://cfl65rha1p34a" path="res://scenes/devil.tscn" id="9_eb6dy"]
 [ext_resource type="Script" uid="uid://cubpy68qt6glm" path="res://scripts/status.gd" id="13_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://b7dxp5453ri50" path="res://art/devil-health-under.png" id="17_0ld40"]
@@ -21,11 +23,6 @@ size = Vector2(1246, 47)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_eb6dy")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-offset_right = 1164.0
-offset_bottom = 71.0
 
 [node name="background" type="ParallaxBackground" parent="."]
 offset = Vector2(0, 350)
@@ -79,11 +76,6 @@ offset_top = 36.0
 offset_right = 1161.0
 offset_bottom = 689.0
 
-[node name="time" type="Label" parent="ui"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="devil_health" type="TextureProgressBar" parent="ui"]
 texture_filter = 1
 layout_mode = 1
@@ -97,6 +89,25 @@ max_value = 1000.0
 value = 1000.0
 texture_under = ExtResource("17_0ld40")
 texture_progress = ExtResource("18_gqmmt")
+
+[node name="home" type="TextureButton" parent="ui"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -9.0
+offset_top = -35.0
+offset_right = 28.0
+offset_bottom = -18.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("9_a8y0u")
+texture_pressed = ExtResource("9_a8y0u")
+
+[node name="time" type="Label" parent="ui"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = -28.0
+offset_right = 202.0
+offset_bottom = 13.0
+theme = ExtResource("7_trceg")
 
 [node name="platform_spawn" type="Node2D" parent="."]
 script = ExtResource("6_o6xl0")
@@ -143,7 +154,9 @@ alignment = 2
 position = Vector2(206, 318)
 
 [node name="devil" parent="." instance=ExtResource("9_eb6dy")]
-position = Vector2(-315, 453)
+position = Vector2(-350, 453)
+scale = Vector2(11, 11)
 
+[connection signal="pressed" from="ui/home" to="." method="_on_home_pressed"]
 [connection signal="timeout" from="platform_spawn/spawn_timer" to="platform_spawn" method="_on_timer_timeout"]
 [connection signal="timeout" from="stage_timer" to="." method="_on_stage_timer_timeout"]

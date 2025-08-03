@@ -26,10 +26,10 @@ func take_damage(dmg):
 	health -= dmg
 	get_parent().get_node("ui/devil_health").value = health
 	
-	#var d = damage.instantiate()
-	#d.position = Vector2(10, -25)
-	#d.text = str(dmg)
-	#add_child(d)
+	var d = damage.instantiate()
+	d.position = Vector2(10, -20)
+	d.text = str(dmg)
+	add_child(d)
 	
 	if health <= 10:
 		# boss dead !!!
@@ -75,9 +75,9 @@ func flame_throw(vertical):
 	f.vertical = vertical
 	
 	if vertical:
-		f.position = Vector2(800 + rng.randi_range(0, 2) * 200, 620)
+		f.position = Vector2(800 + rng.randi_range(0, 2) * 200, 525)
 	else: 
-		f.position = Vector2(930, 350 + rng.randi_range(0, 1) * 200)
+		f.position = Vector2(925, 350 + rng.randi_range(0, 1) * 200)
 	
 	
 	get_parent().add_child(f)

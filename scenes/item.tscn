@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dial727yuurq8"]
 
 [ext_resource type="Texture2D" uid="uid://ddbi3l7fsn7ch" path="res://art/heart-collect.png" id="1_4gq7n"]
-[ext_resource type="Script" uid="uid://d1o36v6u0rmug" path="res://scenes/item.gd" id="1_s8enn"]
+[ext_resource type="Script" uid="uid://d1o36v6u0rmug" path="res://scripts/item.gd" id="1_s8enn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gq7n"]
 radius = 8.25379
